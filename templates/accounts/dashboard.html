@@ -1,0 +1,120 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block content %}
+
+<!-- SECTION -->
+<div class="section">
+    <!-- container -->
+    <div class="container">
+        {% include 'includes/alerts.html' %}
+        <!-- row -->
+        <div class="row">
+            <aside class="col-3">
+                <!-- Billing Details -->
+                <div class="billing-details">
+                    <aside class="col-md-3">
+                        <!--   SIDEBAR   -->
+                        <ul class="list-group">
+                            <a class="list-group-item active" href="#"> My order history </a>
+                            <a class="list-group-item" href="#"> Transactions </a>
+                            <a class="list-group-item" href="#"> Return and refunds </a>
+                            <a class="list-group-item" href="#">Settings </a>
+                            <a class="list-group-item" href="#"> My Selling Items </a>
+                            <a class="list-group-item" href="#"> Received orders </a>
+                        </ul>
+                        <br>
+                        <a class="btn btn-light btn-block" href="{% url 'logout' %}"> <i class="fa fa-power-off"></i>
+                            <span class="text">Logout</span> </a>
+                        <!--   SIDEBAR .//END   -->
+                    </aside>
+
+                </div>
+                <!-- /Order Summary Details Ends Here -->
+            </aside>
+
+            <!-- Order Total -->
+            <div class="col-md-9 order-details">
+                <div class="section-title text-justify order-col">
+                    <div class="order-col">
+                        <div>
+                            <strong>Order ID: </strong>6123456789
+                            <strong>Order Date: </strong>04/20/2025
+                        </div>
+                    </div>
+                </div>
+                <div class="order-summary">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <h6 class="text-muted">Delivery to:</h6>
+                            <p>Lisa Johnson <br>
+                                Phone +233 54-247-4172 <br> Email: myname@pixsellz.com <br>
+                                Location: Home number, Building name, Street 123, Accra, GH <br>
+                                P.O. Box: 100123
+                            </p>
+                        </div>
+                        <div class="col-md-4 text-right">
+                            <h6 class="text-muted">Payment</h6>
+                            <span class="text-success">
+                                <i class="fa fa-cc-visa"></i>
+                                Visa **** 4216
+                            </span>
+                            <p>Subtotal: GH₵ 356.00 <br>
+                                Shipping fee: GH₵ 56.00 <br>
+                                <span class="b">Total: GH₵ 456.00</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <tr>
+                            <td width="65">
+                                <img src="../images/items/1.jpg" class="img-xs border">
+                            </td>
+                            <td>
+                                <p class="title mb-0">Product name goes here </p>
+                                <var class="price text-muted">GH₵ 145</var>
+                            </td>
+                            <td> Seller <br> Nike clothing </td>
+                            <td width="250"> <a href="#" class="newsletter-btn">Track order</a> <a href="#"
+                                    class="btn btn-light"> Details </a> </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <img src="../images/items/2.jpg" class="img-xs border">
+                            </td>
+                            <td>
+                                <p class="title mb-0">Another name goes here </p>
+                                <var class="price text-muted">GH₵ 15</var>
+                            </td>
+                            <td> Seller <br> ABC shop </td>
+                            <td> <a href="#" class="newsletter-btn">Track order</a> <a href="#" class="btn btn-light">
+                                    Details
+                                </a> </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <img src="../images/items/3.jpg" class="img-xs border">
+                            </td>
+                            <td>
+                                <p class="title mb-0">The name of the product goes here </p>
+                                <var class="price text-muted">GH₵ 145</var>
+                            </td>
+                            <td> Seller <br> Wallmart </td>
+                            <td> <a href="#" class="newsletter-btn">Track order</a> <a href="#" class="btn btn-light">
+                                    Details
+                                </a> </td>
+                        </tr>
+                    </table>
+                </div> <!-- table-responsive .end// -->
+                <!-- /Order Total End Here-->
+            </div>
+            <!-- /row -->
+        </div>
+        <!-- /container -->
+    </div>
+    <!-- /SECTION -->
+
+    {% endblock %}

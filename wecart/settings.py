@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,7 +21,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-%z@^4ce1h+*3lzekj*ap^&p6bg_)18hraj8$vb&dvlx!h*8_oz'
+SECRET_KEY = 'django-insecure-s5kwb(d-niyj=&j=d7t&v8o-nwdw&e!zw_1!)kx5j%tico-wb$'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -40,6 +41,7 @@ INSTALLED_APPS = [
     'category',
     'accounts',
     'store',
+    'carts',
 ]
 
 MIDDLEWARE = [
@@ -57,14 +59,15 @@ ROOT_URLCONF = 'wecart.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['templates'],
+        'DIRS': ['templates'],  # Directory for custom templates
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'category.context_processors.menu_links',
+                'category.context_processors.menu_links',  # Custom context processor for categories
+                'carts.context_processors.counter',  # Custom context processor for cart count
             ],
         },
     },
@@ -72,7 +75,8 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'wecart.wsgi.application'
 
-AUTH_USER_MODEL = 'accounts.Account'
+# Authentication settings
+AUTH_USER_MODEL = 'accounts.Account'  # Custom user model
 
 
 # Database
@@ -120,15 +124,32 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
-STATIC_URL = '/static/'
-STATIC_ROOT = BASE_DIR /'static'
+STATIC_URL = 'static/'
+STATIC_ROOT = BASE_DIR / 'static'  # Directory for static files
 STATICFILES_DIRS = [
-    'wecart/static',
+    'wecart/static',  # Custom static files directory
 ]
 
 # Media files (User-uploaded content)
-MEDIA_URL = '/media/'
+MEDIA_URL = 'media/'
 MEDIA_ROOT = BASE_DIR / 'media'  # Directory for media files
+
+
+from django.contrib.messages import constants as messages
+MESSAGES_TAGS = {
+    messages.ERROR: 'danger',  # Customize error message tag
+    messages.SUCCESS: 'success',  # Customize success message tag
+}
+
+# Email settings
+
+EMAIL_HOST = 'smtp.gmail.com'  # SMTP server
+EMAIL_PORT = 465  # Port for SSL
+DEFAULT_FROM_EMAIL = 'weCart'
+EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_GMAIL')
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_GMAIL_SECRET')
+EMAIL_USE_SSL = True 
+EMAIL_USE_TLS = False
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
