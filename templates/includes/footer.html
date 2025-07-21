@@ -54,10 +54,10 @@
                     <div class="footer">
                         <h3 class="footer-title">Service</h3>
                         <ul class="footer-links">
-                            <li><a href="#">My Account</a></li>
-                            <li><a href="#">View Cart</a></li>
-                            <li><a href="#">Wishlist</a></li>
-                            <li><a href="#">Track My Order</a></li>
+                            <li><a href="{% url 'dashboard'%}">My Account</a></li>
+                            <li><a href="{% url 'cart' %}">View Cart</a></li>
+                            <!-- <li><a href="#">Wishlist</a></li> -->
+                            <!-- <li><a href="#">Track My Order</a></li> -->
                             <li><a href="#">Help</a></li>
                         </ul>
                     </div>
@@ -96,12 +96,30 @@
     </div>
     <!-- /bottom footer -->
     <!-- jQuery Plugins -->
-    <script src="{% static 'js/jquery.min.js' %}"></script>
-    <script src="{% static 'js/bootstrap.min.js' %}"></script>
-    <script src="{% static 'js/slick.min.js' %}"></script>
-    <script src="{% static 'js/nouislider.min.js' %}"></script>
-    <script src="{% static 'js/jquery.zoom.min.js' %}"></script>
-    <script src="{% static 'js/main.js' %}"></script>
-
+    
 </footer>
 <!-- /FOOTER -->
+
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/slick.min.js' %}"></script>
+<script src="{% static 'js/nouislider.min.js' %}"></script>
+<script src="{% static 'js/jquery.zoom.min.js' %}"></script>
+<script src="{% static 'js/main.js' %}"></script>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+<script>
+    $(document).ready(function(){
+        $('.thumb a').click(function(e){
+            e.preventDefault();
+            $('.mainImage img').attr('src', $(this).attr("href"));
+        })
+    })
+</script>
+
+
+</body>
+</html>
+

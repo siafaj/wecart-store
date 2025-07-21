@@ -1,6 +1,6 @@
 from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Product, ReviewRating
+from .models import Product, ReviewRating, ProductGallery
 from category.models import Category
 from carts.views import _cart_id
 from carts.models import CartItem
@@ -31,9 +31,14 @@ def store(request, category_slug=None):
         paged_products = paginator.get_page(page)
         product_count = products.count()
     
+    # Get Product Reviews
+    for product in products:
+        reviews = ReviewRating.objects.filter(product_id=product.id, status=True)
+
     context = {
         'products': paged_products,
         'product_count': product_count,
+        'reviews': reviews,
     }
 
     return render(request, 'store/store.html', context)
@@ -56,12 +61,17 @@ def product_detail(request, category_slug, product_slug):
 
     # Get Product Reviews
     reviews = ReviewRating.objects.filter(product_id=single_product.id, status=True)
+
+    # Get Product Gallery
+    product_gallery = ProductGallery.objects.filter(product_id=single_product.id)
+
     
     context = {
         'single_product': single_product,
         'in_cart': in_cart,
         'orderproduct': orderproduct,
         'reviews': reviews,
+        'product_gallery': product_gallery,
     }
     return render(request, 'store/product_detail.html', context)
 
