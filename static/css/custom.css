@@ -52,7 +52,7 @@ ul.thumb{
 }
 
 ul.thumb{
-    list-style: now;
+    list-style: none;
     margin: 10px;
 }
 
