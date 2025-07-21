@@ -137,6 +137,7 @@
 
                 <a href="{% url 'checkout' %}" class="primary-btn order-submit">Checkout <i class="fa fa-arrow-circle-right"></i></a>
                 <a href="{% url 'store' %}" class="newsletter-btn order-submit text-center">Continue Shopping</a>
+                <!-- <p id="delivery-date"></p> -->
             </div>
             <!-- /Order Total End Here-->
         </div>
@@ -154,4 +155,21 @@
 <script src="{% static 'js/nouislider.min.js' %}"></script>
 <script src="{% static 'js/jquery.zoom.min.js' %}"></script>
 <script src="{% static 'js/main.js' %}"></script>
+
+<!-- <script>
+    function getBusinessDaysLater(days) {
+        const result = new Date();
+        let count = 0;
+        while (count < days) {
+            result.setDate(result.getDate() + 1);
+            const day = result.getDay();
+            if (day !== 0 && day !== 6) count++;  // Skip Sunday (0) and Saturday (6)
+        }
+        return result.toDateString();
+    }
+
+    const minDate = getBusinessDaysLater(3);
+    const maxDate = getBusinessDaysLater(5);
+    document.getElementById("delivery-date").textContent = `Estimated delivery date: ${maxDate}`;
+</script> -->
 {% endblock %}
