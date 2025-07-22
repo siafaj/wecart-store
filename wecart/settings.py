@@ -27,7 +27,7 @@ SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', default=False, cast=bool)
 
-ALLOWED_HOSTS = ['django-wecartgh-env.eba-ivgrunbx.us-west-2.elasticbeanstalk.com']
+ALLOWED_HOSTS = ['django-wecartgh-env.eba-ivgrunbx.us-west-2.elasticbeanstalk.com','/*/','127.0.0.1:8000']
 
 
 # Application definition
@@ -110,8 +110,8 @@ DATABASES = {
 
         'HOST': config('DB_HOST'),
 
-        'PORT':config('DB_PORT', default='5432', cast=int),
-}
+        'PORT':config('DB_PORT', default='5432'),
+    }
 }
 
 
